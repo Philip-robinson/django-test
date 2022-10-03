@@ -117,17 +117,17 @@ We are going to have a database containing share information, the
 following tables will be needed:
 
 * Shares
-*  name, 256 char text field.
+ *  name, 256 char text field.
 * Transactions
-*  share, reference to Share
-*  date, date of transaction
-*  buy\_sell, enumeration SELL or BUY.
-*  number, number of shares
-*  cost, number, total amount paid or receieved.
+ *  share, reference to Share
+ *  date, date of transaction
+ *  buy\_sell, enumeration SELL or BUY.
+ *  number, number of shares
+ *  cost, number, total amount paid or receieved.
 * Price\_changes
-*  share, reference to Share
-*  date, date of transaction
-*  price, number
+ *  share, reference to Share
+ *  date, date of transaction
+ *  price, number
 
 First we need to register the app:
 
