@@ -1,0 +1,23 @@
+html {
+ font-family: sans-serif;s
+ background: #eee;
+ padding: 5px;
+}
+body {
+ max-width: 1200px;
+ margin: 0 auto;
+ background: white;
+}
+h1 {
+ font-family: serif;
+ color: #377ba8;
+ margin: 5px 20px;
+}
+table{
+  border: 1px solid blue;
+  padding: 5px;
+  margin: 5px;
+}
+table tr:nth-child(2n+1) td{
+  background-color: #fed;
+}

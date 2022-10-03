@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>{{title}}</title>
+        <link rel="stylesheet" href="/static/home/style.css" />
+    </head>
+    <body>
+        <h1>Shares</h1>
+
+        <table>
+        {% for x in companies %}
+            <tr>
+                <td>{{ x.name }}</td>
+                <td><a href="/shares/detail/{{ x.id }}">detail</a></td>
+            </tr>
+        {% endfor %}
+        </table>
+    </body>
+</html>
+
