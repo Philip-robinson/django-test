@@ -126,8 +126,8 @@ following tables will be needed:
 	* cost, number, total amount paid or receieved.
 * Price\_changes
 	* share, reference to Share
- *  date, date of transaction
- *  price, number
+	*  date, date of transaction
+	*  price, number
 
 First we need to register the app:
 
