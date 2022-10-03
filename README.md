@@ -1,4 +1,4 @@
-# Creating a website with pyton and django.
+# Creating a website with python and django.
 
 I have had some success creating django projects using the command line.
 
