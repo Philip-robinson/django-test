@@ -57,11 +57,11 @@ $ python manage.py runserver
 ```
 
 This will start up a web server, no content added yet, but a default
-page is displayedi, by default this can be found at:
+page is displayed, by default this can be found at:
 
 http://localhost:8000
 
-This server is net meant for production but is great for testing.
+This server is not meant for production but is great for testing.
 
 NOTiE: This next bit I am a bit foggy about as it is new to me,
 but I currently think the following is true:
@@ -108,7 +108,7 @@ home
 ```
 
 It will also add a file db.sqlite3 which is an sqlite database
-file to te root directory and a cache directory __ \_\_pycache\_\_ __ to
+file to the root directory and a cache directory __ \_\_pycache\_\_ __ to
 the project directory, that is under __projectNumber1__.
 
 ### Database configuration
@@ -186,7 +186,7 @@ $ python manage.py migrate
 ```
 
 The first of these creates a script specifying the database changes
-that msut be made and the second applies them to the database.
+that must be made and the second applies them to the database.
 
 If we fire up the shell we can manually populate and view the database
 using the type of python that will be used when writing the code:
@@ -199,7 +199,6 @@ Shares.objects.all()
 Will list all known shares which are currently none, but shares can be
 added.
 
-you will always need
 ```
 from home.models import Shares, Transactions, Price_Changes
 share = Shares(name='Share number one')
@@ -211,7 +210,7 @@ Shares(name='Share number two').save()
 ```
 
 We can also add a price change for both shares, if you execute
-__Shares.objectd.all().values()__ you can see iall the fields of
+__Shares.objectd.all().values()__ you can see all the fields of
 the shares we have created including their id.
 
 ```
@@ -244,11 +243,8 @@ if we now add another date change:
 Price_Changes(share_id=2, date=datetime.datetime.now(), price=1000).save()
 ```
 
-we can now do some queries __Q__ is helpful with generating queriess.
-
 ```
-from django.db.models import Q
-x = Price_Changes.objects.filter(Q(share__name__contains='two'))
+x = Price_Changes.objects.filter(share__name__contains='two')
 ```
 
 The query section __share__name__contains='two'__ 
@@ -267,7 +263,7 @@ print(x)
 
 # A view of the data
 
-To create a view of the data ifirst add a template file at __home/templates/home.html__ and put some html.
+To create a view of the data first add a template file at __home/templates/home.html__ and put some html.
 
 ```
 <html>
@@ -309,12 +305,11 @@ python manage.py runserver
 ```
 and pint your browser at __http://localhost:8000/shares__
 
-/shares because that is specified in the projectNumber1/urls.py
+/shares because that is specified in the __projectNumber1/urls.py__
 
+The displayed page shows the share names we have in the database and for each one a link to show more details.
 
-The displayed page sgows the sahre names we have in the database and for each one a link to show more details.
-
-This now needs to be implemented.
+The show detail url now needs to be implemented.
 
 Create a new template __home/templates/detail.html__
 ```
@@ -325,7 +320,7 @@ Create a new template __home/templates/detail.html__
     <body>
         <h1>Details of {{name}}</h1>
 
-				<h2>Transactions</ht>
+	<h2>Transactions</ht>
         <table>
             <tr><th>Date</th><th>buy or sell</th>
                 <th>Number</th><th>Total cost</th></tr>
@@ -338,7 +333,7 @@ Create a new template __home/templates/detail.html__
             </tr>
         {% endfor %}
         </table>
-				<h2>Price changes</ht>
+	<h2>Price changes</ht>
         <table>
             <tr><th>Date</th><th>New price</th></tr>
         {% for x in prices %}
@@ -353,7 +348,7 @@ Create a new template __home/templates/detail.html__
 
 ```
 
-add an function to __home/views.py__
+add a function to __home/views.py__
 ```
 def detail(request, id):
     template = loader.get_template("detail.html")
@@ -406,14 +401,12 @@ the price changes are taken from the Price_Change table.
 
 This is amazingly hard, I would go to flask for this alone.
 
-Theer are two mechanisms for delivering static files, one
-works in dev and the other in production, basically as for production 
+There are two mechanisms for delivering static files, one
+works in dev and the other in production, this is because for production 
 purposes the built in web server is not used they assume that the
-static files are delivered externally.
+static files are delivered by some external web server.
 
 we can add a static css file at __home/static/home/style.css__
-
-So this is a development only solution, it works for me.
 
 First add a request for the stylesheet into the headers of both templates.
 ```
@@ -452,11 +445,11 @@ table tr:nth-child(2n+1) td{
 
 ```
 
-You should then have a pretier display.
+You should then have a perttier display.
 
 ## Provideing Restful API data
 
-We can add the following three urlpatters to __home/urls.py__
+We can add the following three urlpatterns to __home/urls.py__
 
 ```
      path('api/shares', views.apishares, name='apishares'),
@@ -485,13 +478,12 @@ def api_transactions(request, id):
 
 ```
 
-The odd thing about this code really is that the Jsonparser is very fussy
-about what it will process, it likes:-
-* It only process dictonaries
-* It won't proccess query results, so theu have to be converted into a list
-of dictionaries.
+The odd thing about this code really is that the JsonParser is very fussy
+about what it will process and will not preocess the results of a database
+query directly, so these query results need to be convered to simple lists
+dictionaries.
 
-but these can now be accessed at
+These view can now be accessed at
 * __http://localhost:8000/shares/api/shares__
 * __http://localhost:8000/shares/api/prices/id_ where id should be replaced
 by the id of the relevant share.
