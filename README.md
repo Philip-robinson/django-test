@@ -26,18 +26,18 @@ Go to the directory into which you want to place the project
 then, on the command line run
 
 ```
-$ django-admin startproject projectNumber1
+$ django-admin startproject django-test
 
 ```
-This creates a subdirectory called __projectNumber1__ containing the
+This creates a subdirectory called __django-test__ containing the
 file manage.py which is used to perform management tasks within the 
 project.
 
-It also contains a subdirectory with the same name __projectNumber1__
+It also contains a subdirectory with the same name __djangoi-test__
 which is the project proper.
 
 ```
-ProjectNumber1
+django-test
     |
     +--- manage.py
     +--- projectNumber1
@@ -109,7 +109,7 @@ home
 
 It will also add a file db.sqlite3 which is an sqlite database
 file to te root directory and a cache directory __ \_\_pycache\_\_ __ to
-the project directoryi, that is under __projectNumer1__.
+the project directory, that is under __django-test__.
 
 ### Database configuration
 
@@ -133,7 +133,7 @@ following tables will be needed:
 
 First we need to register the app:
 
-Edit __projectNumber1/settings.py__ adding the __home.apps.HomeConfig__
+Edit __django-test/settings.py__ adding the __home.apps.HomeConfig__
 to the app list
 
 Take the list __INSTALLED_APPS__ and add a line to the end so it becomes:
