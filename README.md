@@ -12,7 +12,7 @@ https://www.w3schools.com/django/django\_create\_project.php
 What seems to be important about django is the directory structure.
 
 ## setup the project
-First create the project, you need to have installed python and djangoi,
+First create the project, you need to have installed python and django,
 how you do this depends on your os so will not ve described here.
 
 On the system used for this work the installed software was:
@@ -26,18 +26,18 @@ Go to the directory into which you want to place the project
 then, on the command line run
 
 ```
-$ django-admin startproject django-test
+$ django-admin startproject projectNumber1
 
 ```
-This creates a subdirectory called __django-test__ containing the
+This creates a subdirectory called __projectNumber1__ containing the
 file manage.py which is used to perform management tasks within the 
 project.
 
-It also contains a subdirectory with the same name __djangoi-test__
+It also contains a subdirectory with the same name __projectNumber1__
 which is the project proper.
 
 ```
-django-test
+projectNumber1
     |
     +--- manage.py
     +--- projectNumber1
@@ -109,7 +109,7 @@ home
 
 It will also add a file db.sqlite3 which is an sqlite database
 file to te root directory and a cache directory __ \_\_pycache\_\_ __ to
-the project directory, that is under __django-test__.
+the project directory, that is under __projectNumber1__.
 
 ### Database configuration
 
@@ -133,7 +133,7 @@ following tables will be needed:
 
 First we need to register the app:
 
-Edit __django-test/settings.py__ adding the __home.apps.HomeConfig__
+Edit __projectNumber1/settings.py__ adding the __home.apps.HomeConfig__
 to the app list
 
 Take the list __INSTALLED_APPS__ and add a line to the end so it becomes:
