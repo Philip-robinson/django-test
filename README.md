@@ -118,14 +118,12 @@ following tables will be needed:
 
 * Shares
 ** name, 256 char text field.
-
 ** Transactions
 *** share, reference to Share
 *** date, date of transaction
 *** buy_sell, enumeration SELL or BUY.
 *** number, number of shares
 *** cost, number, total amount paid or receieved.
-
 ** Price\_changes
 *** share, reference to Share
 *** date, date of transaction
@@ -271,6 +269,6 @@ result in x being a list of the two price changes:
 print(x)
 <QuerySet [
     <Price_Changes: Price_Changes object (2)>,
-    <Price_Changes: Price_Changes object (3)>i
+    <Price_Changes: Price_Changes object (3)>
 ]>
 ```
